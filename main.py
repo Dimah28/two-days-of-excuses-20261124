@@ -71,6 +71,8 @@ def validate(excuse: str) -> None:
         raise SystemExit(f"excuse is {len(excuse)} characters, must be 1-200")
     if "\n" in excuse or "\r" in excuse:
         raise SystemExit("excuse must be a single line")
+    if excuse != excuse.strip():
+        raise SystemExit("excuse must not start or end with whitespace")
     if not any(not ch.isspace() for ch in excuse):
         raise SystemExit("excuse must contain a non-whitespace character")
 
